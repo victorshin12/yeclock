@@ -1,6 +1,7 @@
 import 'package:alarm/alarm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:soundpool/soundpool.dart';
 import 'package:yeclock/const.dart';
 import 'package:yeclock/screens/settings.dart';
@@ -18,9 +19,9 @@ class ExampleAlarmRingScreen extends StatefulWidget {
 class _ExampleAlarmRingScreenState extends State<ExampleAlarmRingScreen> {
   @override
   Widget build(BuildContext context) {
-    return Graduation(
-      alarmSettings: widget.alarmSettings,
-    );
+    return AppTheme.mainFont.toString()=="Helvetica" ?
+    Pablo(alarmSettings: widget.alarmSettings) :
+    Graduation(alarmSettings: widget.alarmSettings,);
   }
 }
 
@@ -42,7 +43,21 @@ class Graduation extends StatelessWidget {
           ),
           child: Stack(
             children: [
-              WakeUp(),
+              Padding(
+    padding: const EdgeInsets.only(top: 70, right: 35),
+    child: Align(
+      alignment: Alignment.topRight,
+      child: Text(
+        "waKeUp",
+        style: TextStyle(
+          color: AppTheme.accentColor,
+          fontFamily: AppTheme.mainFont,
+          fontWeight: FontWeight.bold,
+          fontSize: 36,
+        ),
+      ),
+    ),
+  ),
               ButtonRow(a: alarmSettings),
             ],
           ),
@@ -61,7 +76,21 @@ class Pablo extends StatelessWidget {
         backgroundColor: AppTheme.mainColor,
         body: Stack(
           children: [
-            const WakeUp(),
+            Padding(
+    padding: EdgeInsets.only(top: 120),
+    child: Align(
+      alignment: Alignment.topCenter,
+      child: Text(
+        "WAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\n",
+        style: TextStyle(
+          color: AppTheme.accentColorPablo,
+          fontFamily: AppTheme.mainFont,
+          fontWeight: FontWeight.bold,
+          fontSize: 48,
+        ),
+      ),
+    ),
+  ),
             const Ye(),
             ButtonRow(a: alarmSettings),
           ],
@@ -85,13 +114,53 @@ class Ye extends StatelessWidget {
   }
 }
 
-class WakeUp extends StatelessWidget {
-  const WakeUp({super.key});
+// class WakeUp extends StatelessWidget {
+  // const WakeUp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return AppTheme.wakeupTemplate;
-  }
+  // @override
+  // Widget build(BuildContext context) {
+  //   Padding wakeUpPablo = Padding(
+  //   padding: const EdgeInsets.only(top: 120),
+  //   child: Align(
+  //     alignment: Alignment.topCenter,
+  //     child: Text(
+  //       "WAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\n",
+  //       style: TextStyle(
+  //         color: AppTheme.accentColorPablo,
+  //         fontFamily: AppTheme.mainFont,
+  //         fontWeight: FontWeight.bold,
+  //         fontSize: 48,
+  //       ),
+  //     ),
+  //   ),
+  // );
+
+  // Padding wakeUpGrad = Padding(
+  //   padding: const EdgeInsets.only(top: 70, right: 35),
+  //   child: Align(
+  //     alignment: Alignment.topRight,
+  //     child: Text(
+  //       "waKeUp",
+  //       style: TextStyle(
+  //         color: AppTheme.accentColor,
+  //         fontFamily: AppTheme.mainFont,
+  //         fontWeight: FontWeight.bold,
+  //         fontSize: 36,
+  //       ),
+  //     ),
+  //   ),
+  // );
+
+    // return getTheme()==1 ? wakeUpGrad : wakeUpPablo;
+  // }
+// }
+
+Future<int?> getTheme() async{
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  print("Text:" + prefs.getInt("theme").toString());
+  print(prefs.getInt("theme").toString()=="1");
+  
+  return prefs.getInt('theme');
 }
 
 class ButtonRow extends StatelessWidget {
@@ -145,7 +214,15 @@ class ButtonRow extends StatelessWidget {
                         int streamId = await pool.play(soundId);
                       });
                     },
-                    child: AppTheme.snoozePablo),
+                    child: Text(
+    "SNOOZE",
+    style: TextStyle(
+      color: AppTheme.accentColor,
+      fontFamily: AppTheme.mainFont,
+      fontWeight: FontWeight.bold,
+      fontSize: 24,
+    ),
+  ),),
               ),
             ),
             Container(
@@ -176,7 +253,15 @@ class ButtonRow extends StatelessWidget {
                       // Alarm.stop(alarmSettings.id)
                       //     .then((_) => Navigator.pop(context));
                     },
-                    child: AppTheme.stopPablo),
+                    child: Text(
+    "STOP",
+    style: TextStyle(
+      color: AppTheme.accentColor,
+      fontFamily: AppTheme.mainFont,
+      fontWeight: FontWeight.bold,
+      fontSize: 24,
+    ),
+  ),),
               ),
             ),
           ],

@@ -1,6 +1,7 @@
 import 'package:alarm/alarm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yeclock/const.dart';
 import 'package:yeclock/screens/settings.dart';
 
@@ -133,24 +134,56 @@ class _ExampleAlarmEditScreenState extends State<ExampleAlarmEditScreen> {
               children: [
                 TextButton(
                     onPressed: () => Navigator.pop(context, false),
-                    child: AppTheme.editCancelPablo),
+                    child: Text(
+                      "CANCEL",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: AppTheme.accentColor,
+                        fontFamily: AppTheme.mainFont,
+                        fontWeight: FontWeight.bold,
+                        ),
+                      ),),
                 TextButton(
                   onPressed: saveAlarm,
                   child: loading
                       ? const CircularProgressIndicator()
-                      : AppTheme.editSavePablo,
+                      : Text(
+                          "SAVE",
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: AppTheme.accentColor,
+                            fontFamily: AppTheme.mainFont,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                 ),
               ],
             ),
             Text(
               '${isToday() ? 'TODAY' : 'TOMORROW'} AT',
-              style: AppTheme.todayTomorrow,
+              // style: AppTheme.todayTomorrow,
+              style: TextStyle(
+                fontFamily: AppTheme.mainFont,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: AppTheme.accentColor,
+              )
             ),
             TimePickerSpinner(
               time: dateTimeFormat,
               is24HourMode: false,
-              normalTextStyle: AppTheme.unselectedSpinnerPablo,
-              highlightedTextStyle: AppTheme.selectedSpinnerPablo,
+              normalTextStyle: TextStyle(
+    fontFamily: AppTheme.mainFont,
+    fontWeight: FontWeight.bold,
+    fontSize: 24,
+    color: AppTheme.accentColor.withOpacity(0.5),
+  ),
+              highlightedTextStyle: TextStyle(
+    fontFamily: AppTheme.mainFont,
+    fontWeight: FontWeight.bold,
+    fontSize: 24,
+    color: AppTheme.accentColor,
+  ),
               spacing: 50,
               itemHeight: 45,
               isForce2Digits: true,
@@ -166,7 +199,13 @@ class _ExampleAlarmEditScreenState extends State<ExampleAlarmEditScreen> {
               children: [
                 Text(
                   'LOOP AUDIO',
-                  style: AppTheme.optionsPablo,
+                  style: TextStyle(
+    fontFamily: AppTheme.mainFont,
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+    color: AppTheme.accentColor,
+  ),
+
                 ),
                 Switch(
                   value: loopAudio,
@@ -181,7 +220,12 @@ class _ExampleAlarmEditScreenState extends State<ExampleAlarmEditScreen> {
               children: [
                 Text(
                   'VIBRATE',
-                  style: AppTheme.optionsPablo,
+                  style: TextStyle(
+    fontFamily: AppTheme.mainFont,
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+    color: AppTheme.accentColor,
+  ),
                 ),
                 Switch(
                   value: vibrate,
@@ -196,7 +240,12 @@ class _ExampleAlarmEditScreenState extends State<ExampleAlarmEditScreen> {
               children: [
                 Text(
                   'MAX VOLUME',
-                  style: AppTheme.optionsPablo,
+                  style: TextStyle(
+    fontFamily: AppTheme.mainFont,
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+    color: AppTheme.accentColor,
+  ),
                 ),
                 Switch(
                   value: volumeMax,
@@ -206,6 +255,17 @@ class _ExampleAlarmEditScreenState extends State<ExampleAlarmEditScreen> {
                 ),
               ],
             ),
+            TextButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+              ),
+              onPressed: () async {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                print(prefs.getInt('theme'));
+              },
+              child: Text('Status Check'),
+            ),
+
             // Row(
             //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
             //   children: [
@@ -267,17 +327,39 @@ class _ExampleAlarmEditScreenState extends State<ExampleAlarmEditScreen> {
                     ),
                   );
                 },
-                      child: Text("SETTINGS", style: AppTheme.optionsPablo)),
+                      child: Text("SETTINGS", style: TextStyle(
+    fontFamily: AppTheme.mainFont,
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+    color: AppTheme.accentColor,
+  ),)),
                   TextButton(
                     onPressed: deleteAlarm,
-                    child: Text('DELETE', style: AppTheme.optionsPablo),
+                    child: Text('DELETE', style: TextStyle(
+    fontFamily: AppTheme.mainFont,
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+    color: AppTheme.accentColor,
+  ),),
                   ),
                 ],
               ),
             if (creating)
               TextButton(
-                  onPressed: null,
-                  child: Text("SETTINGS", style: AppTheme.optionsPablo)),
+                  onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SettingsPage(),
+                    ),
+                  );
+                },
+                  child: Text("SETTINGS", style: TextStyle(
+    fontFamily: AppTheme.mainFont,
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+    color: AppTheme.accentColor,
+  ),)),
             const SizedBox(
               height: 0,
             ),

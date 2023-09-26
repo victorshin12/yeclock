@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart'; // Import shared_pr
 import 'package:yeclock/const.dart';
 import 'package:yeclock/const.dart';
 import 'package:yeclock/main.dart';
+import 'package:restart_app/restart_app.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -36,12 +37,16 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SETTINGS', style: TextStyle(fontFamily: AppTheme.mainFont, fontWeight: FontWeight.bold)),
+        title: Text('SETTINGS',
+            style: TextStyle(
+                fontFamily: AppTheme.mainFont, fontWeight: FontWeight.bold)),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        titleTextStyle:
-            TextStyle(color: AppTheme.accentColor, fontSize: 24, fontFamily: AppTheme.mainFont),
+        titleTextStyle: TextStyle(
+            color: AppTheme.accentColor,
+            fontSize: 24,
+            fontFamily: AppTheme.mainFont),
         leading: Padding(
           padding: const EdgeInsets.only(left: 20.0), // Add left padding
           child: IconButton(
@@ -61,39 +66,82 @@ class _SettingsPageState extends State<SettingsPage> {
           children: [
             Column(
               children: [
-                Text("THEME", style: titleFont),
+                Text("THEME", style: TextStyle(
+    color: AppTheme.accentColor,
+    fontSize: 24,
+    fontFamily: AppTheme.mainFont,
+    fontWeight: FontWeight.bold)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("GRADUATION", style: subFont),
+                    Text("GRADUATION", style: TextStyle(
+  color: AppTheme.accentColor,
+  fontSize: 18,
+  fontFamily: AppTheme.mainFont,
+  fontWeight: FontWeight.bold,
+),),
                     Switch(
                       value: isGraduation,
                       onChanged: (value) {
                         setState(() {
                           isGraduation = value;
                         });
-                        _saveThemePreference(value ? 0 : 1); // Save the selected theme preference.
+                        _saveThemePreference(value
+                            ? 0
+                            : 1); // Save the selected theme preference.
                         changeTheme();
                         print(value);
                       },
-                      thumbColor: MaterialStateProperty.all<Color>(AppTheme.accentColor),
+                      thumbColor: MaterialStateProperty.all<Color>(
+                          AppTheme.accentColor),
                       activeTrackColor: Colors.black.withOpacity(0.35),
                     ),
                     Text(
                       "LIFE OF PABLO",
-                      style: subFont,
+                      style: TextStyle(
+  color: AppTheme.accentColor,
+  fontSize: 18,
+  fontFamily: AppTheme.mainFont,
+  fontWeight: FontWeight.bold,
+),
                     ),
                   ],
                 ),
+                // ElevatedButton(
+                //   style: ButtonStyle(
+                //       backgroundColor: MaterialStateProperty.all<Color>(
+                //           AppTheme.accentColor)),
+                //   onPressed: () {
+                //     RestartWidget.restartApp(context);
+                //     // print("hello");
+                //   },
+                //   child: Text(
+                //     "RESTART APP",
+                //     style: TextStyle(
+                //       color: AppTheme.mainColor,
+                //       fontSize: 18,
+                //       fontFamily: AppTheme.mainFont,
+                //     ),
+                //   ),
+                // ),
               ],
             ),
             Column(
               children: [
-                Text("CONTACT", style: titleFont),
+                Text("CONTACT", style: TextStyle(
+    color: AppTheme.accentColor,
+    fontSize: 24,
+    fontFamily: AppTheme.mainFont,
+    fontWeight: FontWeight.bold),),
                 SizedBox(
                   height: 10,
                 ),
-                Text("yeclock@gmail.com", style: subFont),
+                Text("yeclock@gmail.com", style: TextStyle(
+  color: AppTheme.accentColor,
+  fontSize: 18,
+  fontFamily: AppTheme.mainFont,
+  fontWeight: FontWeight.bold,
+),),
                 SizedBox(
                   height: 5,
                 ),
@@ -102,8 +150,14 @@ class _SettingsPageState extends State<SettingsPage> {
                     mainAxisAlignment: MainAxisAlignment
                         .center, // Center the contents horizontally
                     children: [
-                      FaIcon(FontAwesomeIcons.instagram, color: AppTheme.accentColor),
-                      Text(" yeclock", style: subFont),
+                      FaIcon(FontAwesomeIcons.instagram,
+                          color: AppTheme.accentColor),
+                      Text(" yeclock", style: TextStyle(
+  color: AppTheme.accentColor,
+  fontSize: 18,
+  fontFamily: AppTheme.mainFont,
+  fontWeight: FontWeight.bold,
+),),
                     ],
                   ),
                 ),
@@ -111,14 +165,18 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             Column(
               children: [
-                Text("SUGGEST", style: titleFont),
+                Text("SUGGEST", style: TextStyle(
+    color: AppTheme.accentColor,
+    fontSize: 24,
+    fontFamily: AppTheme.mainFont,
+    fontWeight: FontWeight.bold),),
                 SizedBox(
                   height: 5,
                 ),
                 ElevatedButton(
                   style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(AppTheme.accentColor)),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          AppTheme.accentColor)),
                   onPressed: () {
                     // Redirect to a link (replace with your URL)
                     // You can use the launch_url package to open a URL.
@@ -142,37 +200,31 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 }
 
-TextStyle titleFont = TextStyle(
-  color: AppTheme.accentColor,
-  fontSize: 24,
-  fontFamily: AppTheme.mainFont,
-  fontWeight: FontWeight.bold
-);
+// TextStyle titleFont = TextStyle(
+//     color: AppTheme.accentColor,
+//     fontSize: 24,
+//     fontFamily: AppTheme.mainFont,
+//     fontWeight: FontWeight.bold);
 
-TextStyle subFont = TextStyle(
-  color: AppTheme.accentColor,
-  fontSize: 18,
-  fontFamily: AppTheme.mainFont,
-  fontWeight: FontWeight.bold,
-);
+// TextStyle subFont = TextStyle(
+//   color: AppTheme.accentColor,
+//   fontSize: 18,
+//   fontFamily: AppTheme.mainFont,
+//   fontWeight: FontWeight.bold,
+// );
 
-void changeTheme() {}
+void changeTheme() {
+}
 
 ////////
 ////////
-////////
-////////
-////////
-////////
-
 
 class AppTheme extends StatefulWidget {
   const AppTheme({super.key});
-  
+
   ////////////
   static Color mainColor = mainColorGraduation;
   static Color accentColor = accentColorGraduation;
-
 
   static Color mainColorPablo = const Color(0xfff58b57);
   static Color accentColorPablo = const Color(0xff000000);
@@ -186,112 +238,110 @@ class AppTheme extends StatefulWidget {
   static String fontGraduation = "Compacta";
 
 /////////////
-  static Padding wakeupTemplate = wakeUpGrad;
+  // static Padding wakeupTemplate = wakeUpGrad;
 
-  static Padding wakeUpPablo = Padding(
-    padding: const EdgeInsets.only(top: 120),
-    child: Align(
-      alignment: Alignment.topCenter,
-      child: Text(
-        "WAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\n",
-        style: TextStyle(
-          color: accentColorPablo,
-          fontFamily: mainFont,
-          fontWeight: FontWeight.bold,
-          fontSize: 48,
-        ),
-      ),
-    ),
-  );
+  // static Padding wakeUpPablo = Padding(
+  //   padding: const EdgeInsets.only(top: 120),
+  //   child: Align(
+  //     alignment: Alignment.topCenter,
+  //     child: Text(
+  //       "WAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\nWAKE UP\n",
+  //       style: TextStyle(
+  //         color: accentColorPablo,
+  //         fontFamily: mainFont,
+  //         fontWeight: FontWeight.bold,
+  //         fontSize: 48,
+  //       ),
+  //     ),
+  //   ),
+  // );
 
-  static Padding wakeUpGrad = Padding(
-    padding: const EdgeInsets.only(top: 70, right: 35),
-    child: Align(
-      alignment: Alignment.topRight,
-      child: Text(
-        "waKeUp",
-        style: TextStyle(
-          color: accentColor,
-          fontFamily: mainFont,
-          fontWeight: FontWeight.bold,
-          fontSize: 36,
-        ),
-      ),
-    ),
-  );
+  // static Padding wakeUpGrad = Padding(
+  //   padding: const EdgeInsets.only(top: 70, right: 35),
+  //   child: Align(
+  //     alignment: Alignment.topRight,
+  //     child: Text(
+  //       "waKeUp",
+  //       style: TextStyle(
+  //         color: accentColor,
+  //         fontFamily: mainFont,
+  //         fontWeight: FontWeight.bold,
+  //         fontSize: 36,
+  //       ),
+  //     ),
+  //   ),
+  // );
 
-  static Text snoozePablo = Text(
-    "SNOOZE",
-    style: TextStyle(
-      color: accentColor,
-      fontFamily: mainFont,
-      fontWeight: FontWeight.bold,
-      fontSize: 24,
-    ),
-  );
+  // static Text snoozePablo = Text(
+  //   "SNOOZE",
+  //   style: TextStyle(
+  //     color: accentColor,
+  //     fontFamily: mainFont,
+  //     fontWeight: FontWeight.bold,
+  //     fontSize: 24,
+  //   ),
+  // );
 
-  static Text stopPablo = Text(
-    "STOP",
-    style: TextStyle(
-      color: accentColor,
-      fontFamily: mainFont,
-      fontWeight: FontWeight.bold,
-      fontSize: 24,
-    ),
-  );
+  // static Text stopPablo = Text(
+  //   "STOP",
+  //   style: TextStyle(
+  //     color: accentColor,
+  //     fontFamily: mainFont,
+  //     fontWeight: FontWeight.bold,
+  //     fontSize: 24,
+  //   ),
+  // );
 
-  static Text editCancelPablo = Text(
-    "CANCEL",
-    style: TextStyle(
-      fontSize: 20,
-      color: accentColor,
-      fontFamily: mainFont,
-      fontWeight: FontWeight.bold,
-    ),
-  );
+  // static Text editCancelPablo = Text(
+  //   "CANCEL",
+  //   style: TextStyle(
+  //     fontSize: 20,
+  //     color: accentColor,
+  //     fontFamily: mainFont,
+  //     fontWeight: FontWeight.bold,
+  //   ),
+  // );
 
-  static Text editSavePablo = Text(
-    "SAVE",
-    style: TextStyle(
-      fontSize: 20,
-      color: accentColor,
-      fontFamily: mainFont,
-      fontWeight: FontWeight.bold,
-    ),
-  );
+  // static Text editSavePablo = Text(
+  //   "SAVE",
+  //   style: TextStyle(
+  //     fontSize: 20,
+  //     color: accentColor,
+  //     fontFamily: mainFont,
+  //     fontWeight: FontWeight.bold,
+  //   ),
+  // );
 
-  static TextStyle todayTomorrow = TextStyle(
-    fontFamily: mainFont,
-    fontWeight: FontWeight.bold,
-    fontSize: 16,
-    color: accentColor,
-  );
+  // static TextStyle todayTomorrow = TextStyle(
+  //   fontFamily: mainFont,
+  //   fontWeight: FontWeight.bold,
+  //   fontSize: 16,
+  //   color: accentColor,
+  // );
 
-  static TextStyle unselectedSpinnerPablo = TextStyle(
-    fontFamily: mainFont,
-    fontWeight: FontWeight.bold,
-    fontSize: 24,
-    color: accentColor.withOpacity(0.5),
-  );
+  // static TextStyle unselectedSpinnerPablo = TextStyle(
+  //   fontFamily: mainFont,
+  //   fontWeight: FontWeight.bold,
+  //   fontSize: 24,
+  //   color: accentColor.withOpacity(0.5),
+  // );
 
-  static TextStyle selectedSpinnerPablo = TextStyle(
-    fontFamily: mainFont,
-    fontWeight: FontWeight.bold,
-    fontSize: 24,
-    color: accentColor,
-  );
+  // static TextStyle selectedSpinnerPablo = TextStyle(
+  //   fontFamily: mainFont,
+  //   fontWeight: FontWeight.bold,
+  //   fontSize: 24,
+  //   color: accentColor,
+  // );
 
-  static TextStyle optionsPablo = TextStyle(
-    fontFamily: mainFont,
-    fontWeight: FontWeight.bold,
-    fontSize: 16,
-    color: accentColor,
-  );
-
+  // static TextStyle optionsPablo = TextStyle(
+  //   fontFamily: mainFont,
+  //   fontWeight: FontWeight.bold,
+  //   fontSize: 16,
+  //   color: accentColor,
+  // );
 
   @override
   State<AppTheme> createState() => _AppThemeState();
-
 }
 
 class _AppThemeState extends State<AppTheme> {
@@ -306,23 +356,21 @@ class _AppThemeState extends State<AppTheme> {
   loadThemePreference() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      themeValue = prefs.getInt('theme') ?? 0; // Default to 0 if 'theme' doesn't exist
+      themeValue =
+          prefs.getInt('theme') ?? 0; // Default to 0 if 'theme' doesn't exist
     });
 
-    // // Update the mainColor based on the themeValue
-    // if (themeValue == 0) {
-    //   AppTheme.mainColor = AppTheme.mainColorPablo;
-    //   AppTheme.accentColor = AppTheme.accentColorPablo;
-    //   AppTheme.mainFont = AppTheme.fontPablo;
-    //   AppTheme.wakeupTemplate = AppTheme.wakeUpPablo;
-    // } else {
-    //   AppTheme.mainColor = AppTheme.mainColorGraduation;
-    //   AppTheme.accentColor = AppTheme.accentColorGraduation;
-    //   AppTheme.mainFont = AppTheme.fontGraduation;
-    //   AppTheme.wakeupTemplate = AppTheme.wakeUpGrad;
-    // }
+    // Update the mainColor based on the themeValue
+    if (themeValue == 0) {
+      AppTheme.mainColor = AppTheme.mainColorPablo;
+      AppTheme.accentColor = AppTheme.accentColorPablo;
+      AppTheme.mainFont = AppTheme.fontPablo;
+    } else {
+      AppTheme.mainColor = AppTheme.mainColorGraduation;
+      AppTheme.accentColor = AppTheme.accentColorGraduation;
+      AppTheme.mainFont = AppTheme.fontGraduation;
+    }
   }
-
 
   @override
   Widget build(BuildContext context) {
