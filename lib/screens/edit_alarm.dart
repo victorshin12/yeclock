@@ -255,16 +255,16 @@ class _ExampleAlarmEditScreenState extends State<ExampleAlarmEditScreen> {
                 ),
               ],
             ),
-            TextButton(
-              style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-              ),
-              onPressed: () async {
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                print(prefs.getInt('theme'));
-              },
-              child: Text('Status Check'),
-            ),
+            // TextButton(
+            //   style: ButtonStyle(
+            //     foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+            //   ),
+            //   onPressed: () async {
+            //     SharedPreferences prefs = await SharedPreferences.getInstance();
+            //     print(prefs.getInt('theme'));
+            //   },
+            //   child: Text('Status Check'),
+            // ),
 
             // Row(
             //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
