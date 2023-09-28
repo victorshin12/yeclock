@@ -18,6 +18,8 @@ class YeClock extends StatefulWidget {
 }
 
 class _YeClockState extends State<YeClock> {
+
+
   late List<AlarmSettings> alarms;
 
   static StreamSubscription? subscription;
@@ -29,6 +31,7 @@ class _YeClockState extends State<YeClock> {
     subscription ??= Alarm.ringStream.stream.listen(
       (alarmSettings) => navigateToRingScreen(alarmSettings),
     );
+    // SettingsPage();
   }
 
   void loadAlarms() {

@@ -1,3 +1,4 @@
+import 'package:alarm/alarm.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart'; // Import shared_preferences package
@@ -66,23 +67,41 @@ class _SettingsPageState extends State<SettingsPage> {
           children: [
             Column(
               children: [
-                Text("THEME", style: TextStyle(
-    color: AppTheme.accentColor,
-    fontSize: 24,
-    fontFamily: AppTheme.mainFont,
-    fontWeight: FontWeight.bold)),
+                Text("THEME",
+                    style: TextStyle(
+                        color: AppTheme.accentColor,
+                        fontSize: 24,
+                        fontFamily: AppTheme.mainFont,
+                        fontWeight: FontWeight.bold)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("GRADUATION", style: TextStyle(
-  color: AppTheme.accentColor,
-  fontSize: 18,
-  fontFamily: AppTheme.mainFont,
-  fontWeight: FontWeight.bold,
-),),
+                    Text(
+                      "LIFE OF PABLO",
+                      style: TextStyle(
+                        color: AppTheme.accentColor,
+                        fontSize: 18,
+                        fontFamily: AppTheme.mainFont,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     Switch(
                       value: isGraduation,
                       onChanged: (value) {
+                        showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                                  title: const Text('Theme Change'),
+                                  content:
+                                      const Text('To ensure complete theme change, please exit the app, revisit the settings page, and then create a new alarm.'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(context, 'OK'),
+                                      child: const Text('OK'),
+                                    ),
+                                  ],
+                                ));
                         setState(() {
                           isGraduation = value;
                         });
@@ -97,13 +116,13 @@ class _SettingsPageState extends State<SettingsPage> {
                       activeTrackColor: Colors.black.withOpacity(0.35),
                     ),
                     Text(
-                      "LIFE OF PABLO",
+                      "GRADUATION",
                       style: TextStyle(
-  color: AppTheme.accentColor,
-  fontSize: 18,
-  fontFamily: AppTheme.mainFont,
-  fontWeight: FontWeight.bold,
-),
+                        color: AppTheme.accentColor,
+                        fontSize: 18,
+                        fontFamily: AppTheme.mainFont,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ],
                 ),
@@ -128,20 +147,26 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             Column(
               children: [
-                Text("CONTACT", style: TextStyle(
-    color: AppTheme.accentColor,
-    fontSize: 24,
-    fontFamily: AppTheme.mainFont,
-    fontWeight: FontWeight.bold),),
+                Text(
+                  "CONTACT",
+                  style: TextStyle(
+                      color: AppTheme.accentColor,
+                      fontSize: 24,
+                      fontFamily: AppTheme.mainFont,
+                      fontWeight: FontWeight.bold),
+                ),
                 SizedBox(
                   height: 10,
                 ),
-                Text("yeclock@gmail.com", style: TextStyle(
-  color: AppTheme.accentColor,
-  fontSize: 18,
-  fontFamily: AppTheme.mainFont,
-  fontWeight: FontWeight.bold,
-),),
+                Text(
+                  "yeclock@gmail.com",
+                  style: TextStyle(
+                    color: AppTheme.accentColor,
+                    fontSize: 18,
+                    fontFamily: AppTheme.mainFont,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 SizedBox(
                   height: 5,
                 ),
@@ -152,12 +177,15 @@ class _SettingsPageState extends State<SettingsPage> {
                     children: [
                       FaIcon(FontAwesomeIcons.instagram,
                           color: AppTheme.accentColor),
-                      Text(" yeclock", style: TextStyle(
-  color: AppTheme.accentColor,
-  fontSize: 18,
-  fontFamily: AppTheme.mainFont,
-  fontWeight: FontWeight.bold,
-),),
+                      Text(
+                        " yeclock",
+                        style: TextStyle(
+                          color: AppTheme.accentColor,
+                          fontSize: 18,
+                          fontFamily: AppTheme.mainFont,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -165,11 +193,14 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             Column(
               children: [
-                Text("SUGGEST", style: TextStyle(
-    color: AppTheme.accentColor,
-    fontSize: 24,
-    fontFamily: AppTheme.mainFont,
-    fontWeight: FontWeight.bold),),
+                Text(
+                  "SUGGEST",
+                  style: TextStyle(
+                      color: AppTheme.accentColor,
+                      fontSize: 24,
+                      fontFamily: AppTheme.mainFont,
+                      fontWeight: FontWeight.bold),
+                ),
                 SizedBox(
                   height: 5,
                 ),
@@ -213,8 +244,7 @@ class _SettingsPageState extends State<SettingsPage> {
 //   fontWeight: FontWeight.bold,
 // );
 
-void changeTheme() {
-}
+void changeTheme() {}
 
 ////////
 ////////
@@ -345,7 +375,7 @@ class AppTheme extends StatefulWidget {
 }
 
 class _AppThemeState extends State<AppTheme> {
-  int themeValue = 0; // Default theme value, change as needed
+  int themeValue = 1; // Default theme value, change as needed
 
   @override
   void initState() {
@@ -357,11 +387,11 @@ class _AppThemeState extends State<AppTheme> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       themeValue =
-          prefs.getInt('theme') ?? 0; // Default to 0 if 'theme' doesn't exist
+          prefs.getInt('theme') ?? 0; // Default to 1 if 'theme' doesn't exist
     });
 
     // Update the mainColor based on the themeValue
-    if (themeValue == 0) {
+    if (themeValue == 1) {
       AppTheme.mainColor = AppTheme.mainColorPablo;
       AppTheme.accentColor = AppTheme.accentColorPablo;
       AppTheme.mainFont = AppTheme.fontPablo;
