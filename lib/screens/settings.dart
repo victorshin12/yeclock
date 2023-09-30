@@ -256,8 +256,8 @@ class AppTheme extends StatefulWidget {
   const AppTheme({super.key});
 
   ////////////
-  static Color mainColor = mainColorGraduation;
-  static Color accentColor = accentColorGraduation;
+  static Color mainColor = mainColorPablo;
+  static Color accentColor = accentColorPablo;
 
   static Color mainColorPablo = const Color(0xfff58b57);
   static Color accentColorPablo = const Color(0xff000000);
@@ -265,7 +265,7 @@ class AppTheme extends StatefulWidget {
   static Color accentColorGraduation = const Color(0xffed008d);
 
 /////////////
-  static String mainFont = fontGraduation;
+  static String mainFont = fontPablo;
 
   static String fontPablo = "Helvetica";
   static String fontGraduation = "Compacta";
@@ -378,7 +378,7 @@ class AppTheme extends StatefulWidget {
 }
 
 class _AppThemeState extends State<AppTheme> {
-  int themeValue = 1; // Default theme value, change as needed
+  int themeValue = 0; // Default theme value, change as needed
 
   @override
   void initState() {

@@ -110,33 +110,33 @@ class _YeClockState extends State<YeClock> {
                 ),
               ),
       ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            FloatingActionButton(
-              onPressed: () {
-                final alarmSettings = AlarmSettings(
-                  id: 69,
-                  dateTime: DateTime.now(),
-                  assetAudioPath: 'assets/marimba.mp3',
-                  volumeMax: false,
-                );
-                Alarm.set(alarmSettings: alarmSettings);
-              },
-              backgroundColor: Colors.red,
-              heroTag: null,
-              child: const Text("RING NOW", textAlign: TextAlign.center),
-            ),
-            // FloatingActionButton(
-            //   onPressed: () => navigateToAlarmScreen(null),
-            //   child: const Icon(Icons.alarm_add_rounded, size: 33),
-            // ),
-          ],
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButton: Padding(
+      //   padding: const EdgeInsets.all(10),
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //     children: [
+      //       FloatingActionButton(
+      //         onPressed: () {
+      //           final alarmSettings = AlarmSettings(
+      //             id: 69,
+      //             dateTime: DateTime.now(),
+      //             assetAudioPath: 'assets/marimba.mp3',
+      //             volumeMax: false,
+      //           );
+      //           Alarm.set(alarmSettings: alarmSettings);
+      //         },
+      //         backgroundColor: Colors.red,
+      //         heroTag: null,
+      //         child: const Text("RING NOW", textAlign: TextAlign.center),
+      //       ),
+      //       // FloatingActionButton(
+      //       //   onPressed: () => navigateToAlarmScreen(null),
+      //       //   child: const Icon(Icons.alarm_add_rounded, size: 33),
+      //       // ),
+      //     ],
+      //   ),
+      // ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
