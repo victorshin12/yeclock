@@ -6,6 +6,7 @@ import 'package:yeclock/const.dart';
 import 'package:yeclock/const.dart';
 import 'package:yeclock/main.dart';
 import 'package:restart_app/restart_app.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -194,7 +195,7 @@ class _SettingsPageState extends State<SettingsPage> {
             Column(
               children: [
                 Text(
-                  "SUGGEST",
+                  "FEEDBACK",
                   style: TextStyle(
                       color: AppTheme.accentColor,
                       fontSize: 24,
@@ -208,9 +209,11 @@ class _SettingsPageState extends State<SettingsPage> {
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
                           AppTheme.accentColor)),
-                  onPressed: () {
-                    // Redirect to a link (replace with your URL)
-                    // You can use the launch_url package to open a URL.
+                  onPressed: () async {
+                    final Uri _url = Uri.parse('https://forms.gle/P4RUpYMFPTYKc5oY7');
+                    if (!await launchUrl(_url)) {
+                      throw Exception('Could not launch feedback form.');
+                    }
                   },
                   child: Text(
                     "FORM",
