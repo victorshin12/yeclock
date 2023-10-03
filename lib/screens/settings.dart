@@ -94,7 +94,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             builder: (BuildContext context) => AlertDialog(
                                   title: const Text('Theme Change'),
                                   content:
-                                      const Text('To ensure complete theme change, please exit the app, revisit the settings page, and then create a new alarm.'),
+                                      const Text('To ensure complete theme change, please revisit the settings page, then create a new alarm.'),
                                   actions: <Widget>[
                                     TextButton(
                                       onPressed: () =>
@@ -378,7 +378,7 @@ class AppTheme extends StatefulWidget {
 }
 
 class _AppThemeState extends State<AppTheme> {
-  int themeValue = 0; // Default theme value, change as needed
+  int themeValue = 1; // Default theme value, change as needed
 
   @override
   void initState() {
@@ -390,7 +390,7 @@ class _AppThemeState extends State<AppTheme> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       themeValue =
-          prefs.getInt('theme') ?? 0; // Default to 1 if 'theme' doesn't exist
+          prefs.getInt('theme') ?? 1; // Default to 1 if 'theme' doesn't exist
     });
 
     // Update the mainColor based on the themeValue

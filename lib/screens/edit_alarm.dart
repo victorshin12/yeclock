@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:alarm/alarm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
@@ -55,7 +57,7 @@ class _ExampleAlarmEditScreenState extends State<ExampleAlarmEditScreen> {
       vibrate = true;
       volumeMax = true;
       showNotification = true;
-      assetAudio = 'assets/marimba.mp3';
+      assetAudio = 'assets/goodmorning.mp3';
     } else {
       selectedTime = TimeOfDay(
         hour: widget.alarmSettings!.dateTime.hour,
@@ -98,7 +100,7 @@ class _ExampleAlarmEditScreenState extends State<ExampleAlarmEditScreen> {
       loopAudio: loopAudio,
       vibrate: vibrate,
       volumeMax: volumeMax,
-      notificationTitle: showNotification ? 'YeClock' : null,
+      notificationTitle: showNotification ? 'yeclock' : null,
       notificationBody: showNotification ? 'It\'s time to wake up!' : null,
       assetAudioPath: assetAudio,
       stopOnNotificationOpen: false,
@@ -279,41 +281,47 @@ class _ExampleAlarmEditScreenState extends State<ExampleAlarmEditScreen> {
             //     ),
             //   ],
             // ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //   children: [
-            //     Text(
-            //       'Sound',
-            //       style: Theme.of(context).textTheme.titleMedium,
-            //     ),
-            //     // DropdownButton(
-            //     //   value: assetAudio,
-            //     //   items: const [
-            //     //     DropdownMenuItem<String>(
-            //     //       value: 'assets/marimba.mp3',
-            //     //       child: Text('Marimba'),
-            //     //     ),
-            //     //     DropdownMenuItem<String>(
-            //     //       value: 'assets/nokia.mp3',
-            //     //       child: Text('Nokia'),
-            //     //     ),
-            //     //     DropdownMenuItem<String>(
-            //     //       value: 'assets/mozart.mp3',
-            //     //       child: Text('Mozart'),
-            //     //     ),
-            //     //     DropdownMenuItem<String>(
-            //     //       value: 'assets/star_wars.mp3',
-            //     //       child: Text('Star Wars'),
-            //     //     ),
-            //     //     DropdownMenuItem<String>(
-            //     //       value: 'assets/one_piece.mp3',
-            //     //       child: Text('One Piece'),
-            //     //     ),
-            //     //   ],
-            //     //   onChanged: (value) => setState(() => assetAudio = value!),
-            //     // ),
-            //   ],
-            // ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'SOUND',
+                  style: TextStyle(
+    fontFamily: AppTheme.mainFont,
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+    color: AppTheme.accentColor,
+  ),
+                ),
+                DropdownButton(
+                  dropdownColor: AppTheme.mainColor,
+                  iconEnabledColor: AppTheme.accentColor,
+                  style: TextStyle(color: AppTheme.accentColor, fontSize: 16),
+                  value: assetAudio,
+                  items: [
+                    DropdownMenuItem<String>(
+                      value: 'assets/goodmorning.mp3',
+                      child: Text('GOOD MORNING', style: TextStyle(
+    fontFamily: AppTheme.mainFont,
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+    color: AppTheme.accentColor,
+  ),),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: 'assets/feedback.mp3',
+                      child: Text('FEEDBACK', style: TextStyle(
+    fontFamily: AppTheme.mainFont,
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+    color: AppTheme.accentColor,
+  ),),
+                    ),
+                  ],
+                  onChanged: (value) => setState(() => assetAudio = value!),
+                ),
+              ],
+            ),
             if (!creating)
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -4,7 +4,7 @@
 <dict>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-  		<string>https</string>
+		<string>https</string>
 	</array>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
@@ -15,7 +15,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Yeclock</string>
+	<string>yeclock</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
